@@ -1,8 +1,27 @@
+<!-- index.html -->
 {% extends "base.html" %}
 
+{% block dropzoneCss %}
+    {{ dropzone.load_css() }}
+    <style>
+        .dropzone {
+            border: 2px outline=black;
+            margin: 4%;
+            height: 200px;
+            width: 400px;
+        }
+    </style>
+{% endblock %}
+
 {% block content %}
-  <form method=post enctype=multipart/form-data action="/upload">
-      <input type=file name=file>
-      <input type=submit value=Upload>
-  </form>
+    {{ dropzone.create(action='/uploads') }}
+
+
+<button type="button"><a href="/get_outline">Get outline </a></button>
+
+{% endblock %}
+
+{% block dropzoneJs %}
+    {{ dropzone.load_js() }}
+    {{ dropzone.config() }}
 {% endblock %}
