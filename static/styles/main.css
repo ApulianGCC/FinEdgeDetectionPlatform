@@ -32,3 +32,64 @@ body {
   background-color: #008CBA;
   color: white !important;
 }
+
+.dropzone {
+    border: 1px dashed #008CBA;
+    border-radius: 24px;
+    background: white;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 4%;
+    height: 300px;
+    width: 75%;
+    text-anchor: middle;
+
+}
+
+.dz-content{
+    margin-top: 7%;
+    margin-bottom: 7%;
+}
+
+.dz-message{
+    font-family: 'Roboto Thin', sans-serif;
+    color: #666;
+    margin: unset !important;
+    margin-top: 6px !important;
+    margin-bottom: 6px !important;
+}
+
+.dz-message-icon{
+    width: 48px;
+    height: 48px;
+
+}
+
+.default-button{
+    font-family: "Roboto", sans-serif;
+    background-color: #0069BA;
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    border-radius: 24px;
+    width: 200px;
+}
+
+.dz-link{
+    font-family: "Roboto", sans-serif;
+    color: #0069BA;
+    text-decoration: underline;
+    font-size: 18px;
+}
+
+
+.dz-link:hover {
+    color: #1c9dff;
+}
+
+.default-button:hover {background-color: #005090
+}

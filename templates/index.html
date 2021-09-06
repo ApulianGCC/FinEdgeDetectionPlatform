@@ -3,21 +3,20 @@
 
 {% block dropzoneCss %}
     {{ dropzone.load_css() }}
-    <style>
-        .dropzone {
-            border: 2px outline=black;
-            margin: 4%;
-            height: 200px;
-            width: 400px;
-        }
-    </style>
 {% endblock %}
 
 {% block content %}
-    {{ dropzone.create(action='/uploads') }}
+    <div>
+            {{ dropzone.create(action='/uploads') }}
+
+        <div style="width:100%; text-align:center; margin-top:24px">
+            <button class="default-button" type="button"><a style="text-decoration:none; color:white; font-size: 20px" href="/get_outline">Get outline </a></button>
+        </div>
+
+    </div>
 
 
-<button type="button"><a href="/get_outline">Get outline </a></button>
+
 
 {% endblock %}
 

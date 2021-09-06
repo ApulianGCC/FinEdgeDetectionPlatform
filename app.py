@@ -8,7 +8,8 @@ UPLOAD_FOLDER = 'input/'
 OUTPUT_FOLDER = 'output/'
 ALLOWED_EXTENSIONS = {'jpg', 'jpeg'}
 
-app = Flask(__name__)
+static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), "static")
+app = Flask(__name__, static_url_path="/static", static_folder=static_file_dir)
 app.secret_key = os.urandom(16)
 dropzone = Dropzone(app)
 
@@ -18,9 +19,12 @@ app.config['DROPZONE_ALLOWED_FILE_CUSTOM'] = True
 app.config['DROPZONE_ALLOWED_FILE_TYPE'] = 'image/*, .jpg, .jpeg'
 app.config['DROPZONE_MAX_FILE_SIZE'] = 16 * 1024 * 1024
 app.config['DROPZONE_MAX_FILES'] = 1
-app.config[ 'DROPZONE_DEFAULT_MESSAGE'] = 'Drag & Drop your file here' \
-                                          '<br>or<br>' \
-                                          '<button type="button">Click to Upload</button>'
+app.config[ 'DROPZONE_DEFAULT_MESSAGE'] = '<div class="dz-content">' \
+                                          '<img class="dz-message-icon" src = "/static/res/dz-upload-icon.png" />' \
+                                          '<p class="dz-message">Drag & Drop your file here' \
+                                          '<br>or<br></p>' \
+                                          '<a class= "dz-link">Click to Upload</a>' \
+                                          '</div>'
 
 
 def allowed_file(filename):
@@ -31,7 +35,6 @@ def allowed_file(filename):
 @app.route("/")
 def main():
     session.pop('file_name', None)
-    return render_template("index.html", title="Test Falsk")
     return render_template("index.html", title="Fin Edge Detection")
 
 @app.route("/info")
