@@ -93,3 +93,11 @@ body {
 
 .default-button:hover {background-color: #005090
 }
+
+.dz-max-files-reached{
+    pointer-events: none;
+}
+
+.dz-preview{
+    pointer-events: all !important;
+}

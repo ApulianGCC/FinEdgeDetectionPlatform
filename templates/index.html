@@ -22,5 +22,5 @@
 
 {% block dropzoneJs %}
     {{ dropzone.load_js() }}
-    {{ dropzone.config() }}
+    {{ dropzone.config(custom_options='addRemoveLinks: true') }}
 {% endblock %}
