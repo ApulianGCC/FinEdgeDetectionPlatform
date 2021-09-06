@@ -101,3 +101,7 @@ body {
 .dz-preview{
     pointer-events: all !important;
 }
+
+.dz-deleted{
+    display: none !important;
+}

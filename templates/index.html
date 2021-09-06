@@ -22,5 +22,19 @@
 
 {% block dropzoneJs %}
     {{ dropzone.load_js() }}
-    {{ dropzone.config(custom_options='addRemoveLinks: true') }}
+    {{ dropzone.config(custom_options='
+                addRemoveLinks: true,
+
+                removedfile: function (file, data) {
+                    $.ajax({
+                        type:"POST",
+                        url:"/deletefile",
+                        success : function (data) {
+                            alert("File removed from server.")
+                            $(this).closest("dz-preview").addClass("dz-deleted");
+                        }
+                    });
+                }
+    ') }}
+
 {% endblock %}

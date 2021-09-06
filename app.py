@@ -63,27 +63,14 @@ def get_outline():
 
     return redirect(request.url)
 
-'''
-@app.route("/upload", methods=['GET', 'POST'])
-def output():
-    if request.method == 'POST':
-        # check if the post request has the file part
-        if 'file' not in request.files:
-            flash('No file part')
-            return redirect(request.url)
-        file = request.files['file']
-        # If the user does not select a file, the browser submits an
-        # empty file without a filename.
-        if file.filename == '':
-            flash('No selected file')
-            return redirect(request.url)
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            file.save(app.config['UPLOAD_FOLDER'] + filename)
-            eval.run()
-    return render_template("output.html", title="Test Falsk", filename=filename)
-'''
 
+@app.route('/deletefile', methods=['POST'])
+def delete_file():
+    filename = session.pop('file_name', None)
+    if filename is not None:
+        file_path = os.path.join(UPLOAD_FOLDER, filename)
+        os.remove(file_path)
+    return 'deleted'
 
 @app.route('/input/<filename>')
 def send_image_input(filename):
