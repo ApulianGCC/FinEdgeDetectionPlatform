@@ -43,6 +43,7 @@ body {
     height: 300px;
     width: 75%;
     text-anchor: middle;
+    text-align: center;
 
 }
 
@@ -79,6 +80,11 @@ body {
     width: 200px;
 }
 
+.gray-button{
+    pointer-events: none;
+    background-color: #a0a0a0;
+}
+
 .dz-link{
     font-family: "Roboto", sans-serif;
     color: #0069BA;
@@ -102,6 +108,25 @@ body {
     pointer-events: all !important;
 }
 
+
+.dz-remove{
+    font-family: "Roboto", sans-serif;
+    color: #0069BA;
+    text-decoration: underline;
+    font-size: 18px;
+    margin-top: 6px;
+}
+
+.dz-remove:hover {
+    color: #1c9dff;
+}
+
 .dz-deleted{
     display: none !important;
 }
+
+.dz-image{
+    width: 200px !important;
+    height: 200px !important;
+}
+

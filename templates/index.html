@@ -10,7 +10,7 @@
             {{ dropzone.create(action='/uploads') }}
 
         <div style="width:100%; text-align:center; margin-top:24px">
-            <button class="default-button" type="button"><a style="text-decoration:none; color:white; font-size: 20px" href="/get_outline">Get outline </a></button>
+            <button id="getOutlineBtn" class="default-button gray-button" type="button"><a style="text-decoration:none; color:white; font-size: 20px; user-select: nonemig" href="/get_outline">Get outline </a></button>
         </div>
 
     </div>
@@ -23,15 +23,24 @@
 {% block dropzoneJs %}
     {{ dropzone.load_js() }}
     {{ dropzone.config(custom_options='
+                thumbnailWidth: 200,
+                thumbnailHeight: 200,
+                thumbnailMethod: "contain",
                 addRemoveLinks: true,
+
+                success: function(file, response) {
+                    $("#getOutlineBtn").removeClass("gray-button");
+                },
+
 
                 removedfile: function (file, data) {
                     $.ajax({
                         type:"POST",
                         url:"/deletefile",
                         success : function (data) {
-                            alert("File removed from server.")
-                            $(this).closest("dz-preview").addClass("dz-deleted");
+                            $("#myDropzone").children().last().addClass("dz-deleted");
+                            $("#myDropzone").removeClass("dz-max-files-reached");
+
                         }
                     });
                 }

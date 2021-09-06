@@ -1,4 +1,4 @@
-from flask import Flask,session, flash, request, redirect, url_for, render_template, send_from_directory
+from flask import Flask, session, flash, request, redirect, url_for, render_template, send_from_directory
 from flask_dropzone import Dropzone
 import eval
 import os
@@ -19,12 +19,13 @@ app.config['DROPZONE_ALLOWED_FILE_CUSTOM'] = True
 app.config['DROPZONE_ALLOWED_FILE_TYPE'] = 'image/*, .jpg, .jpeg'
 app.config['DROPZONE_MAX_FILE_SIZE'] = 16 * 1024 * 1024
 app.config['DROPZONE_MAX_FILES'] = 1
-app.config[ 'DROPZONE_DEFAULT_MESSAGE'] = '<div class="dz-content">' \
-                                          '<img class="dz-message-icon" src = "/static/res/dz-upload-icon.png" />' \
-                                          '<p class="dz-message">Drag & Drop your file here' \
-                                          '<br>or<br></p>' \
-                                          '<a class= "dz-link">Click to Upload</a>' \
-                                          '</div>'
+app.config['DROPZONE_DEFAULT_MESSAGE'] = '<div class="dz-content">' \
+                                         '<img class="dz-message-icon" src = "/static/res/dz-upload-icon.png" />' \
+                                         '<p class="dz-message">Drag & Drop your file here' \
+                                         '<br>or<br></p>' \
+                                         '<a class= "dz-link">Click to Upload</a>' \
+                                         '</div>'
+
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -35,6 +36,7 @@ def allowed_file(filename):
 def main():
     session.pop('file_name', None)
     return render_template("index.html", title="Fin Edge Detection")
+
 
 @app.route("/info")
 def info():
@@ -71,6 +73,7 @@ def delete_file():
         file_path = os.path.join(UPLOAD_FOLDER, filename)
         os.remove(file_path)
     return 'deleted'
+
 
 @app.route('/input/<filename>')
 def send_image_input(filename):
