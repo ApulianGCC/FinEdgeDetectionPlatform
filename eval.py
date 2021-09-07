@@ -8,18 +8,16 @@ from PIL import Image
 
 global generator
 
+
 def load_model():
     saved_model_dir = 'saved_model_filter'
     global generator
-    generator=tf.keras.models.load_model(os.path.join(saved_model_dir, 'generator'))
-
+    generator = tf.keras.models.load_model(os.path.join(saved_model_dir, 'generator'))
 
 
 def run(filename):
     predicted_image = __prediction__(filename)
     __post_processing__(predicted_image, filename)
-
-
 
 
 def __expand2square__(pil_img, background_color):
@@ -56,7 +54,7 @@ def __prediction__(filename):
         input_image = input_image[None, :, :, :]
         prediction = generator(input_image, training=True)
         prediction = tf.keras.preprocessing.image.array_to_img(prediction[0])
-        path = os.path.join(output_folder, __change_extension__(filename))
+        path = os.path.join(output_folder, change_extension(filename))
         prediction.save(path)
 
         return path
@@ -125,13 +123,13 @@ def __post_processing__(path, filename):
     image[mask_x, mask_y, :3] = 0
 
     final_img = Image.fromarray(np.uint8(image * 255))
-    final_img.save(os.path.join(dir_path, __change_extension__(filename)))
+    final_img.save(os.path.join(dir_path, change_extension(filename)))
 
 
-def __change_extension__(filename):
+def change_extension(filename):
     extension_to_add = "png"
 
-    if filename.endswith('jpg'):
+    if filename.endswith('jpg') or filename.endswith('png'):
         ext_len = 3
     elif filename.endswith('jpeg'):
         ext_len = 4

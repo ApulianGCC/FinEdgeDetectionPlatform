@@ -1,12 +1,12 @@
-from flask import Flask, session, flash, request, redirect, url_for, render_template, send_from_directory
+from flask import Flask, session, flash, request, redirect, render_template, send_from_directory
 from flask_dropzone import Dropzone
 import eval
 import os
 from werkzeug.utils import secure_filename
 
 UPLOAD_FOLDER = 'input/'
-OUTPUT_FOLDER = 'output/'
-ALLOWED_EXTENSIONS = {'jpg', 'jpeg'}
+OUTPUT_FOLDER = 'result/'
+ALLOWED_EXTENSIONS = {'jpg', 'jpeg', 'png'}
 
 static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), "static")
 app = Flask(__name__, static_url_path="/static", static_folder=static_file_dir)
@@ -61,7 +61,7 @@ def get_outline():
         eval.run(file_name)
         return render_template("result.html", title="result", filename=file_name)
     else:
-        flash('devi caricare una foto trmn')
+        flash('devi caricare una foto')
 
     return redirect(request.url)
 
@@ -82,7 +82,7 @@ def send_image_input(filename):
 
 @app.route('/output/<filename>')
 def send_image_output(filename):
-    return send_from_directory(app.config["OUTPUT_FOLDER"], filename.replace('jpg', 'png'))
+    return send_from_directory(app.config["OUTPUT_FOLDER"], eval.change_extension(filename))
 
 
 if __name__ == "__main__":
