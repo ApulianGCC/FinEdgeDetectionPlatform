@@ -1,4 +1,4 @@
-from flask import Flask,session, flash, request, redirect, url_for, render_template, send_from_directory
+from flask import Flask, session, flash, request, redirect, render_template, send_from_directory
 from flask_dropzone import Dropzone
 import eval
 import os
@@ -6,7 +6,7 @@ from werkzeug.utils import secure_filename
 
 UPLOAD_FOLDER = 'input/'
 OUTPUT_FOLDER = 'result/'
-ALLOWED_EXTENSIONS = {'jpg', 'jpeg'}
+ALLOWED_EXTENSIONS = {'jpg', 'jpeg', 'png'}
 
 static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), "static")
 app = Flask(__name__, static_url_path="/static", static_folder=static_file_dir)
@@ -78,7 +78,6 @@ def delete_file():
 @app.route('/input/<filename>')
 def send_image_input(filename):
     return send_from_directory(app.config["UPLOAD_FOLDER"], filename)
-
 
 
 @app.route('/output/<filename>')
