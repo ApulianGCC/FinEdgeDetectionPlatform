@@ -199,8 +199,8 @@ body {
 .img-comp-container {
   position: relative;
   margin:auto;
-  width:300px !important;
-  height: 300px !important; /*should be the same height as the images*/
+  width: 500px !important;
+  height: 500px !important; /*should be the same height as the images*/
 }
 
 .img-comp-img {
@@ -267,5 +267,4 @@ section {
 }
 
 .content{
-    margin: 0% 2%
 }
