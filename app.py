@@ -82,7 +82,7 @@ def send_image_input(filename):
 
 @app.route('/output/<filename>')
 def send_image_output(filename):
-    return send_from_directory(app.config["OUTPUT_FOLDER"], eval.change_extension(filename))
+    return send_from_directory(app.config["OUTPUT_FOLDER"], eval.change_extension(filename),  as_attachment=True)
 
 
 if __name__ == "__main__":

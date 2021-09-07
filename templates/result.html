@@ -2,7 +2,6 @@
 
 {% block content %}
 
-
   <div class="image-container">
 
       <a href="/">
@@ -10,22 +9,31 @@
                style="float: right; margin-top:16px; margin-right:16px"/>
       </a>
 
-
-      <div class="row" style="margin: 0px 4%; width:unset">
-              <div class="column" style="width:50%;">
-                    <h2 class="subtitle-text">Input image</h2>
-                    <img src="{{url_for('send_image_input', filename=filename)}}" width="100%"/>
-
-              </div>
-             <div class="column" style="width:50%;">
-
-                    <h2 class="subtitle-text">Computed outline</h2>
-                    <img src="{{url_for('send_image_output', filename=filename)}}" width="100%"/>
-              </div>
+      <div style="display: flex; width:100% !important;">
+          <h2 class="subtitle-text" style="width:50%">Input image</h2>
+          <h2 class="subtitle-text" style="width:50%">Computed outline</h2>
       </div>
+      <section>
+          <div style="  width: 100%; height: 100%; display:table-row;">
+              <div class="col-left">
+                 <div class="content">
+                    <img src="{{url_for('send_image_input', filename=filename)}}" width="85%"/>
+                 </div>
+              </div>
+              <div class="col-right">
+                  <div class="content">
+                    <img src="{{url_for('send_image_output', filename=filename)}}" width="85%"/>
+                  </div>
+              </div>
+          </div>
+      </section>
 
-      <button id="downloadOutlineBtn" class="transparent-button" type="button" style="margin-bottom:24px">Download outline</button>
-
+      <button id="downloadOutlineBtn" class="transparent-button" type="button" style="margin-bottom:24px">
+          <a href="{{url_for('send_image_output', filename=filename)}}"
+             class="transparent-btn-link">
+              Download outline
+          </a>
+      </button>
 
   </div>
 
