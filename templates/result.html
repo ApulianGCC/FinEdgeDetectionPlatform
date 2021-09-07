@@ -1,7 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>result</h1>
+  <p class="title-text">Computed outline</p>
+  <div class="image-container">
+     <img class="output-image" src="{{url_for('send_image_output', filename=filename)}}"/>
+      <div class="image-container-content">
+        <h4><b>Computed outline</b></h4>
+        <p>Architect & Engineer</p>
+      </div>
+  </div>
   <img src="{{url_for('send_image_input', filename=filename)}}" width="512px" height="512px" />
-  <img src="{{url_for('send_image_output', filename=filename)}}" width="512px" height="512px"/>
+
 {% endblock %}

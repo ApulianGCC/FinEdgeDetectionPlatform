@@ -39,7 +39,7 @@ body {
     background: white;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 4%;
+    margin-top: 16px;
     height: 300px;
     width: 75%;
     text-anchor: middle;
@@ -130,3 +130,77 @@ body {
     height: 200px !important;
 }
 
+.title-text{
+    font-family: "Roboto Thin", sans-serif;
+    text-align: center;
+    color: #212121;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.subtitle-text{
+    font-family: "Roboto Thin", sans-serif;
+    text-align: center;
+    color: #212121;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.body-text{
+    font-family: "Roboto Thin", sans-serif;
+    text-align: center;
+    color: #494949;
+    font-size: 16px;
+}
+
+.image-container{
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: fit-content;
+    margin: 16px;
+}
+.image-container:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.image-container-content{
+    padding: 2px 16px;
+}
+
+.output-image{
+    width: 400px;
+}
+
+* {box-sizing: border-box;}
+
+.img-comp-container {
+  position: relative;
+  margin:auto;
+  width:300px !important;
+  height: 300px !important; /*should be the same height as the images*/
+}
+
+.img-comp-img {
+  position: absolute;
+  width: auto;
+  height: auto;
+  overflow: hidden;
+}
+
+.img-comp-img img {
+  display: block;
+  vertical-align: middle;
+}
+
+.img-comp-slider {
+  position: absolute;
+  z-index: 9;
+  cursor: ew-resize;
+  /*set the appearance of the slider:*/
+  width: 40px;
+  height: 40px;
+  background-color: #2196F3;
+  opacity: 0.7;
+  border-radius: 50%;
+}
