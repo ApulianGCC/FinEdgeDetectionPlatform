@@ -2,30 +2,42 @@
 
 {% block content %}
 
-    <div style="margin-left:16px; margin-right:16px; padding:0px 8px">
-        <h1 class="title-text">Information</h1>
-        <p class="body-text">
-          This platform allows to automatically trace the contour of a dorsal fin.
-          The user only has to upload an image and press the “get outline” button in order to obtain the desired result.
-          The result is obtained using a neural network which extracts the features of the fin outline and automatically produces the contour of the fin.
-          For our purpose we used a conditional generative adversarial network (cGAN) called pix2pix that learns a mapping from input images to output images,
-          realizing an image translation.
-          For our purpose we used the discriminator only to train the model whereas we use the generator to create the outline.
-          The generator has a U-Net based architecture. The U-Net architecture was developed for image segmentation purposes.
-          We applied some modification to the standard architecture to make the network suitable for our goal.
-        </p>
-    </div>
+    <div class="card-container">
+      <h2 class="title-text" style=" font-size: 38px; margin-top: 2%; margin-bottom:0">About the platform</h2>
+        <section>
 
-    <div style=" padding:0px 8px; text-align:center; margin-left:auto; margin-right:auto">
-        <h2 class="subtitle-text">Detected outline example:</h2>
-        <div class="img-comp-container">
-          <div class="img-comp-img">
-            <img src="static/res/img-input-example.jpg" width="300" height="300">
+          <div style="  width: 100%; height: 100%; display:table-row;">
+              <div class="col-left">
+                 <div class="content">
+
+                          <p class="body-text" style="font-size: 16px; text-align:left; margin: 0">
+                              This platform allows to automatically trace the contour of a dorsal fin.
+                              The result is obtained using a neural network which extracts the features of the fin outline and automatically produces the contour of the fin.
+                              For our purpose we used a conditional generative adversarial network (cGAN) called pix2pix that learns a mapping from input images to output images,
+                              realizing an image translation.
+                              For our purpose we used the discriminator only to train the model whereas we use the generator to create the outline.
+                              The generator has a U-Net based architecture. The U-Net architecture was developed for image segmentation purposes.
+                              We applied some modification to the standard architecture to make the network suitable for our goal.
+                          </p>
+                 </div>
+              </div>
+              <div class="col-right">
+                  <div class="content">
+                    <div class="img-comp-container">
+                          <div class="img-comp-img">
+                            <img src="static/res/img-input-example.jpg" width="300" height="300">
+                          </div>
+                         <div class="img-comp-img img-comp-overlay">
+                            <img src="static/res/img-output-example.png" width="300" height="300">
+                          </div>
+                        </div>
+                  </div>
+                  <h2 class="subtitle-text" style="margin: 8px 0; font-size: 16px">Detected outline example</h2>
+              </div>
+
           </div>
-         <div class="img-comp-img img-comp-overlay">
-            <img src="static/res/img-output-example.png" width="300" height="300">
-          </div>
-        </div>
+        </section>
+
     </div>
 
     <div style=" padding:0px 8px; text-align:center; margin-left:auto; margin-right:auto">
