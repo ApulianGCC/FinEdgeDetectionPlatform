@@ -1,5 +1,7 @@
 body {
     margin: unset !important;
+    height:100% !important;
+    min-height:100% !important;
 }
 
 .ul-navbar {
@@ -218,10 +220,50 @@ body {
 
 * {box-sizing: border-box;}
 
-@media screen and (max-width: 600px) {
+@media only screen and (max-device-width: 600px) {
+
   .column {
-    width: 100%;
+    width: 100% !important;
   }
+
+  .dropzone {
+    height: 350px;
+    width: 80%;
+  }
+
+  .dz-message-icon {
+    width: 120px;
+    height: 120px;
+  }
+
+  .dz-message{
+    font-size: 22px;
+  }
+
+  .dz-link{
+    font-size: 24px;
+  }
+
+  .default-btn-a{
+    font-size: 28px !important;
+  }
+
+  .default-button{
+    width: 250px;
+  }
+
+  .section-info{
+    width:90% !important;
+  }
+
+}
+
+.section-info{
+  width:65%;
+}
+
+.default-btn-a{
+    font-size: 20px;
 }
 
 .column {
