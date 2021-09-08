@@ -3,29 +3,80 @@
 {% block content %}
 
     <div style="width:100%">
-        <div style="width:65%; margin: auto; margin-bottom:290px">
+        <div style="width:65%; margin: auto; margin-bottom:320px">
             <h2 class="title-text" style="margin-top: 50px; margin-bottom: 20px">About the platform</h2>
-            <p class="body-text" style="font-size: 16px; text-align:center; line-height: 1.2em">
+            <p class="body-text" style="font-size: 20px; text-align:center; line-height: 1.2em;">
                 This platform allows to automatically trace the contour of a dorsal fin.
                 The result is obtained using a neural network which extracts the features of the fin outline and automatically produces the contour of the fin.
-                For our purpose we used a conditional generative adversarial network (cGAN) called pix2pix that learns a mapping from input images to output images,
-                realizing an image translation.
-                For our purpose we used the discriminator only to train the model whereas we use the generator to create the outline.
-                The generator has a U-Net based architecture. The U-Net architecture was developed for image segmentation purposes.
-                We applied some modification to the standard architecture to make the network suitable for our goal.
             </p>
         </div>
-        <div style="background-color: #0069BA; text-align:center; padding-top:180px">
-            <div class="img-comp-container" style="z-index: 999; margin-top:-430px">
-                <div class="img-comp-img">
-                    <img src="static/res/img-input-example.jpg" width="500" height="500">
-                </div>
-                <div class="img-comp-img img-comp-overlay">
-                    <img src="static/res/img-output-example.png" width="500" height="500">
-                </div>
+        <div style="background-color: #0069BA; text-align:center; padding-top:180px; padding-bottom:80px;">
+
+            <div id="comparison" onmousemove="moveDivisor(event)" style="z-index: 2; margin-top:-430px">
+                  <figure>
+                    <div id="divisor"></div>
+                  </figure>
             </div>
-            <h2 class="subtitle-text" style="margin-bottom:0px">Information about the architecture of the neural network </h2>
-        </div>
+
+            <section style="width:65%; margin:auto; margin-top: 100px">
+
+                <div style="  width: 100%; height: 100%; display:table-row;">
+                    <div class="col-left">
+                         <div class="content" style="text-align:left">
+                             <h2 class="title-text" style="margin-top: 0px; text-align:left; margin-bottom: 30px; color:white; line-height: 1em">Based on Pix2Pix network</h2>
+                             <p class="body-text" style="font-size: 20px; text-align:left; line-height: 1.4em; color:#FFFAF0; margin-bottom:30px">
+                               For our purpose we used a conditional generative adversarial network (cGAN) called pix2pix that learns a mapping from input images to output images, realizing an image translation
+                             </p>
+                             <br>
+
+                                 <a href="https://github.com/phillipi/pix2pix"
+                                    class="transparent-white-button"
+                                    style="font-size:16px; margin-right:4px"
+                                 >
+                                     Discover on GitHub
+                                 </a>
+                             </button>
+
+                                 <a href="https://openaccess.thecvf.com/content_cvpr_2017/papers/Isola_Image-To-Image_Translation_With_CVPR_2017_paper.pdf"
+                                    class="transparent-white-button"
+                                  style="font-size:16px; margin-left:4px"
+                                 >
+                                     View documentation
+                                 </a>
+
+                         </div>
+                     </div>
+                <div class="col-right" >
+                    <div class="content" style="text-align:right">
+                        <img src="static/res/info-image.png" width="80%"/>
+                    </div>
+                </div>
+          </div>
+      </section>
+
+
+    </div>
+
+    <div style="width:65%; margin-left:auto; margin-right:auto; text-align:center; margin-bottom:80px">
+         <h2 class="title-text" style="margin-top: 80px; text-align:center; margin-bottom: 30px; margin-right:auto; margin-left:auto; width:65%; padding-right:16px">More information</h2>
+         <p class="body-text" style="font-size: 20px; text-align:center; line-height: 1.4em; margin-bottom:40px">
+                                For our purpose we used the discriminator only to train the model whereas we use the generator to create the outline.
+                                The generator has a U-Net based architecture. The U-Net architecture was developed for image segmentation purposes.
+         </p>
+
+          <a href="{{url_for('send_image_static', filename='generator_model.png')}}"
+             class="transparent-button" style="margin-left:8px;  font-size:22px; width:350px">
+
+              Download generator model
+          </a>
+
+
+          <a href="{{url_for('send_image_static', filename='discriminator_model.png')}}"
+             class="transparent-button" style="margin-left:8px;  font-size:22px; width:350px">
+              Download discriminator model
+          </a>
+
+
     </div>
 
 

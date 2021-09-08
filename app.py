@@ -85,6 +85,10 @@ def send_image_output(filename):
     return send_from_directory(app.config["OUTPUT_FOLDER"], eval.change_extension(filename),  as_attachment=True)
 
 
+@app.route('/res/<filename>')
+def send_image_static(filename):
+    return send_from_directory(os.path.join(static_file_dir, 'res'), filename,  as_attachment=True)
+
 if __name__ == "__main__":
     eval.load_model()
     app.run(debug=True, port=5000)

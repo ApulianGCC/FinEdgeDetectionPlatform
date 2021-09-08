@@ -3,11 +3,15 @@ body {
 }
 
 .ul-navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: #f3f3f3;
+    z-index: 3;
 }
 
 .li-navbar {
@@ -87,9 +91,11 @@ body {
 
 
 .transparent-button{
+    font-family: "Roboto", sans-serif;
+    text-decoration:none
     text-align: center;
     border: 2px solid #0069BA;
-    padding: 8px 24px;
+    padding: 8px 16px;
     text-decoration: none;
     font-size: 18px;
     cursor: pointer;
@@ -105,14 +111,30 @@ body {
     transition: 0.7s;
 }
 
-.transparent-btn-link{
-    text-decoration:none;
-    color:#0069BA;
-}
 
-.transparent-btn-link:hover{
+.transparent-white-button{
+    font-family: "Roboto", sans-serif;
+    text-decoration:none
+    text-align: center;
+    border: 2px solid white;
+    padding: 8px 16px;
+    text-decoration: none;
+    font-size: 18px;
+    cursor: pointer;
+    display: inline-block;
+    background: rgba(255, 255, 255, 0);
+    border-radius: 24px;
     color: white;
 }
+
+.transparent-white-button:hover{
+    background: white;
+    color: #0069BA;
+    transition: 0.7s;
+}
+
+
+
 
 .dz-link{
     font-family: "Roboto", sans-serif;
@@ -196,37 +218,6 @@ body {
 
 * {box-sizing: border-box;}
 
-.img-comp-container {
-  position: relative;
-  margin:auto;
-  width: 500px !important;
-  height: 500px !important; /*should be the same height as the images*/
-}
-
-.img-comp-img {
-  position: absolute;
-  width: auto;
-  height: auto;
-  overflow: hidden;
-}
-
-.img-comp-img img {
-  display: block;
-  vertical-align: middle;
-}
-
-.img-comp-slider {
-  position: absolute;
-  z-index: 9;
-  cursor: ew-resize;
-  /*set the appearance of the slider:*/
-  width: 40px;
-  height: 40px;
-  background-color: #2196F3;
-  opacity: 0.7;
-  border-radius: 50%;
-}
-
 @media screen and (max-width: 600px) {
   .column {
     width: 100%;
@@ -266,5 +257,37 @@ section {
     padding: 16px;
 }
 
-.content{
+div#comparison {
+  margin:auto;
+  width: 88vw;
+  height: 50vw;
+  max-width: 888px;
+  max-height: 500px;
+  overflow: hidden;
+}
+
+div#comparison figure {
+  background-image: url("/static/res/img-output-example-16-9.png");
+  background-size: cover;
+  position: relative;
+  font-size: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+div#comparison figure>img {
+  position: relative;
+  width: 100%;
+}
+
+div#comparison figure div {
+  background-image: url("/static/res/img-input-example-16-9.jpg");
+  background-size: cover;
+  position: absolute;
+  width: 50%;
+  box-shadow: 0 5px 10px -2px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  bottom: 0;
+  height: 100%;
 }

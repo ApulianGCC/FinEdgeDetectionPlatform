@@ -17,13 +17,15 @@
     <div>
         <nav>
             <ul class="ul-navbar">
-                <li class="li-navbar"><a href="/">Home</a></li>
-                <li class="li-navbar"><a href="/info">Info</a></li>
+                <li class="li-navbar" style=" float: right;"><a href="/info">Info</a></li>
+                <li class="li-navbar" style=" float: right;"><a href="/">Home</a></li>
+                <li class="li-navbar" style="margin-top: 3px; margin-left: 8px"><img src="static/res/logo.png" width="40px" height="40px"/></li>
+                <li class="li-navbar"><h1 class="title-text" style="font-size: 20px; margin-top:12px; margin-left: 10px"> Fin edge detector</h1></li>
             </ul>
         </nav>
     </div>
 
-    <div class="content">
+    <div class="content" style="margin-top:80px;">
         {% block content %}{% endblock %}
     </div>
 
