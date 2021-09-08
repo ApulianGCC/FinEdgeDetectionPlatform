@@ -2,7 +2,10 @@
 
 {% block content %}
 
-  <div class="card-container">
+        <h1 class="title-text" style="margin-bottom:20px; margin-top:100px"> Check the result</h1>
+
+
+  <div class="card-container" style="margin-bottom:80px">
 
       <a href="/">
           <img src="/static/res/close-button.png" alt="close" width="12px" height="12px"
@@ -30,7 +33,7 @@
 
           <a href="{{url_for('send_image_output', filename=filename)}}"
              class="transparent-button"
-             style="margin-bottom:24px">
+             style="margin-top:30px; margin-bottom:45px; font-size:22px; padding: 8px 32px;">
               Download outline
           </a>
 

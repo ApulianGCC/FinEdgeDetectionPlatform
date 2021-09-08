@@ -4,7 +4,7 @@
 
     <div style="width:100%">
         <div style="width:65%; margin: auto; margin-bottom:320px">
-            <h2 class="title-text" style="margin-top: 50px; margin-bottom: 20px">About the platform</h2>
+            <h2 class="title-text" style="margin-top: 100px; margin-bottom: 20px">About the platform</h2>
             <p class="body-text" style="font-size: 20px; text-align:center; line-height: 1.2em;">
                 This platform allows to automatically trace the contour of a dorsal fin.
                 The result is obtained using a neural network which extracts the features of the fin outline and automatically produces the contour of the fin.
@@ -25,7 +25,8 @@
                          <div class="content" style="text-align:left">
                              <h2 class="title-text" style="margin-top: 0px; text-align:left; margin-bottom: 30px; color:white; line-height: 1em">Based on Pix2Pix network</h2>
                              <p class="body-text" style="font-size: 20px; text-align:left; line-height: 1.4em; color:#FFFAF0; margin-bottom:30px">
-                               For our purpose we used a conditional generative adversarial network (cGAN) called pix2pix that learns a mapping from input images to output images, realizing an image translation
+                               For our purpose we used a conditional generative adversarial network (cGAN) called Pix2Pix that learns a mapping from input images to output images.
+                                 <br>To know more:
                              </p>
                              <br>
 
@@ -60,8 +61,8 @@
     <div style="width:65%; margin-left:auto; margin-right:auto; text-align:center; margin-bottom:80px">
          <h2 class="title-text" style="margin-top: 80px; text-align:center; margin-bottom: 30px; margin-right:auto; margin-left:auto; width:65%; padding-right:16px">More information</h2>
          <p class="body-text" style="font-size: 20px; text-align:center; line-height: 1.4em; margin-bottom:40px">
-                                For our purpose we used the discriminator only to train the model whereas we use the generator to create the outline.
-                                The generator has a U-Net based architecture. The U-Net architecture was developed for image segmentation purposes.
+             For our purpose we have modified the input and output layers of both Generator and Discriminator.<br>
+             The models are available for download below.
          </p>
 
           <a href="{{url_for('send_image_static', filename='generator_model.png')}}"
