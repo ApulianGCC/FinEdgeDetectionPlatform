@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="title-text" style="margin-bottom:20px; margin-top:100px"> Check the result</h1>
+
+<div style="text-align:center">
+    <img src="/static/res/zip.png" style="margin-top: 30px; width:150px">
+</div>
+
+<div style="text-align:center">
+
+    <a href="{{url_for('send_zip_output')}}"
+       class="transparent-button"
+       style="margin-top:30px; margin-bottom:45px; font-size:22px; padding: 8px 32px;">
+        Download outline
+    </a>
+</div>
+
+{% endblock %}

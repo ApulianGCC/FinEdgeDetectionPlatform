@@ -16,8 +16,9 @@ def load_model():
 
 
 def run(filename):
-    predicted_image = __prediction__(filename)
-    __post_processing__(predicted_image, filename)
+    for file in filename:
+        predicted_image = __prediction__(file)
+        __post_processing__(predicted_image, file)
 
 
 def __expand2square__(pil_img, background_color):

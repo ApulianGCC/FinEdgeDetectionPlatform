@@ -16,7 +16,9 @@
 
         <div style="width:100%; text-align:center; margin-top:24px; margin-bottom:80px">
             <button id="getOutlineBtn" class="default-button gray-button" type="button"><a class ="default-btn-a" style="text-decoration:none; color:white; user-select: nonemig" href="/get_outline">Get outline </a></button>
+            <button id="resetBtn" class="default-button gray-button" style="margin-left:20px" type="button"><a class ="default-btn-a" style="text-decoration:none; color:white; user-select: nonemig;">Reset Upload</a></button>
         </div>
+
 
     </div>
 
@@ -56,24 +58,12 @@
                 thumbnailWidth: 200,
                 thumbnailHeight: 200,
                 thumbnailMethod: "crop",
-                addRemoveLinks: true,
 
                 success: function(file, response) {
                     $("#getOutlineBtn").removeClass("gray-button");
+                    $("#resetBtn").removeClass("gray-button");
                 },
 
-
-                removedfile: function (file, data) {
-                    $.ajax({
-                        type:"POST",
-                        url:"/deletefile",
-                        success : function (data) {
-                            $("#myDropzone").children().last().addClass("dz-deleted");
-                            $("#myDropzone").removeClass("dz-max-files-reached");
-                            $("#getOutlineBtn").addClass("gray-button");
-                        }
-                    });
-                }
     ') }}
 
 {% endblock %}
