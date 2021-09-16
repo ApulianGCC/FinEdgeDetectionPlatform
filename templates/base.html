@@ -25,7 +25,8 @@
         </nav>
     </div>
 
-    <div class="content" style="margin-top:80px; min-height:83vh">
+    <div style="left: 50%; position: absolute; top: 65%; transform: translate(-50%, -50%); z-index:1"><div id="loader"></div></div>
+    <div id="pageContent" class="content" style="margin-top:80px; min-height:83vh">
         {% block content %}{% endblock %}
     </div>
 
@@ -42,6 +43,7 @@
 
     <script src="static/js/onClickActive.js" type="text/javascript"></script>
     <script src="static/js/resetUpload.js" type="text/javascript"></script>
+    <script src="static/js/loadingOverlay.js" type="text/javascript"></script>
     {% block dropzoneJs %}{% endblock %}
 </body>
 

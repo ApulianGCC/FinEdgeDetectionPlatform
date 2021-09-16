@@ -74,9 +74,7 @@ def upload():
 
 @app.route('/get_outline')
 def get_outline():
-
     file_name = session.get('file_name')
-    print((file_name))
     if file_name is not None:
         eval.run(file_name)
         if len(file_name) == 1:
