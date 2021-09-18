@@ -1,10 +1,11 @@
-from flask import Flask, session, flash, request, redirect, render_template, send_from_directory, send_file
+from flask import Flask, session, flash, request, redirect, render_template, send_from_directory, Response
 from flask_dropzone import Dropzone
 import eval
 import os
+import io
 from werkzeug.utils import secure_filename
 from zipfile import ZipFile
-
+import time
 
 UPLOAD_FOLDER = 'input/'
 OUTPUT_FOLDER = 'result/'
@@ -61,14 +62,7 @@ def upload():
                     f.save(os.path.join(app.config['UPLOAD_FOLDER'] + filename))
                     file_names.append(filename)
         session['file_name'] = file_names
-        print(session)
-        '''
-        f = request.files.get('file')
-        if f and allowed_file(f.filename):
-            filename = secure_filename(f.filename)
-            f.save(os.path.join(app.config['UPLOAD_FOLDER'] + filename))
-            session['file_name'] = filename
-        '''
+
     return 'uploaded'
 
 
@@ -109,17 +103,21 @@ def send_image_output(filename):
 
 @app.route('/zipdownloads')
 def send_zip_output():
-    zipObj = ZipFile(os.path.join(app.config["OUTPUT_FOLDER"], 'results.zip'), 'w')
 
     filename = session.get('file_name')
 
-    for file in filename:
-        print(file)
-        zipObj.write(os.path.join(app.config["OUTPUT_FOLDER"], eval.change_extension(file)))
+    fileobj = io.BytesIO()
+    import zipfile
+    with zipfile.ZipFile(fileobj, 'w') as zip_file:
+        for file in filename:
+            zip_info = zipfile.ZipInfo(os.path.join(app.config["OUTPUT_FOLDER"], eval.change_extension(file)))
+            zip_info.date_time = time.localtime(time.time())[:6]
+            zip_info.compress_type = zipfile.ZIP_DEFLATED
+            with open(os.path.join(app.config["OUTPUT_FOLDER"], eval.change_extension(file)), 'rb') as fd:
+                zip_file.writestr(zip_info, fd.read())
+    fileobj.seek(0)
 
-    zipObj.close()
-
-    return send_file(zipObj, attachment_filename='result.zip', as_attachment=True)
+    return Response(fileobj.getvalue(), mimetype='application/zip', headers={'Content-Disposition': 'attachment;filename=results.zip'})
 
 
 @app.route('/res/<filename>')
